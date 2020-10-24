@@ -47,21 +47,23 @@ const reducer = (state: {}, action: any) => {
 const AuthContext = createContext({} as any);
 
 const AuthProvider = ({ children }: any) => {
-    const token = sessionStorage.getItem('token') || Cookies.get('token');
-    let userString = sessionStorage.getItem('user') || Cookies.get('user');
     let state = DEFAULT_STATE;
-    if (userString) {
-        state.user = JSON.parse(userString);
-    }
-    const date = new Date();
-    if (token) {
-        const decoded: { id: number, exp: number, iat: number } = jwt_decode(token);
-        if (date.getTime() / 1000 > decoded.exp) {
-            Cookies.remove("token");
-            Cookies.remove("user");
-        } else {
-            state.jwt = token;
-            state.loggedIn = true;
+    if(window) {
+        const token = sessionStorage.getItem('token') || Cookies.get('token');
+        let userString = sessionStorage.getItem('user') || Cookies.get('user');
+        if (userString) {
+            state.user = JSON.parse(userString);
+        }
+        const date = new Date();
+        if (token) {
+            const decoded: { id: number, exp: number, iat: number } = jwt_decode(token);
+            if (date.getTime() / 1000 > decoded.exp) {
+                Cookies.remove("token");
+                Cookies.remove("user");
+            } else {
+                state.jwt = token;
+                state.loggedIn = true;
+            }
         }
     }
     return(
