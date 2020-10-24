@@ -5,7 +5,7 @@ import { navigate, Link } from "gatsby";
 
 interface ILoginPageProps {}
 
-export default function Login({}: ILoginPageProps) {
+export default ({}: ILoginPageProps) => {
     const { state } = useAuth();
 
     useEffect(() => {

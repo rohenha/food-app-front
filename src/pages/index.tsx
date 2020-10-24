@@ -3,7 +3,7 @@ import { Link } from "gatsby";
 
 interface IHomePageProps {}
 
-export default function Home({}: IHomePageProps) {
+export default ({}: IHomePageProps) => {
     return (
         <div className="container">
             <h1>Health food</h1>

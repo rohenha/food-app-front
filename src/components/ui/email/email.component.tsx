@@ -4,10 +4,11 @@ import { VerificationFieldComponent } from "Components";
 interface IEmailComponentProps {
     verification?: boolean,
     error?: boolean,
+    defaultValue?: string,
     callback: (_value: string, _attribute: string) => void
 }
 
-export function EmailComponent({ error, verification, callback }: IEmailComponentProps) {
+export function EmailComponent({ error, verification, callback, defaultValue = "" }: IEmailComponentProps) {
     const checkEmailValidity = useCallback((email: string) => {
         const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         return re.test(String(email).toLowerCase());
@@ -17,6 +18,7 @@ export function EmailComponent({ error, verification, callback }: IEmailComponen
         <VerificationFieldComponent
             verification={verification}
             error={error}
+            defaultValue={defaultValue}
             errorsValues={{ value: "L'email n'est pas valide", same: "Les emails ne sont pas identiques"}}
             label="email"
             type="email"
