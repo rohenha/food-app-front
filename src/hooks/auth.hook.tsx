@@ -48,7 +48,7 @@ const AuthContext = createContext({} as any);
 
 const AuthProvider = ({ children }: any) => {
     let state = DEFAULT_STATE;
-    if(window) {
+    if (typeof window !== `undefined`) {
         const token = sessionStorage.getItem('token') || Cookies.get('token');
         let userString = sessionStorage.getItem('user') || Cookies.get('user');
         if (userString) {
