@@ -29,7 +29,9 @@
             "Interfaces": ["./src/interfaces/index.tsx"],
             "Components": ["./src/components/index.tsx"],
             "Fragments": ["./src/fragments/index.tsx"],
-            "Services": ["./src/services/index.tsx"]
+            "Services": ["./src/services/index.tsx"],
+            "Hooks": ["./src/hooks/index.tsx"],
+            "App": ["./src/app/index.tsx"]
         }
     },
     "exclude": [

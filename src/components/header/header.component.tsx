@@ -1,26 +1,21 @@
-import * as React from "react"
+import React from "react";
+import { SignOutComponent } from "Components";
+import { Link } from "gatsby";
 
 import "./header.component.sass"
 
 interface IHeaderComponentProps {}
 
-interface IHeaderComponentState {}
+export function HeaderComponent({}: IHeaderComponentProps) {
 
-export class HeaderComponent extends React.Component<
-    IHeaderComponentProps,
-    IHeaderComponentState
-> {
-    private constructor(props: IHeaderComponentProps) {
-        super(props)
-    }
-
-    public render(): React.ReactElement<any> {
-        return (
-            <header className="header">
-                <div className="container">
-                    <p>Header</p>
-                </div>
-            </header>
-        )
-    }
+    return (
+        <header className="header">
+            <div className="container">
+                <p>Header</p>
+                <Link to="/app">Plan</Link>
+                <Link to="/app/account">Profil</Link>
+                <SignOutComponent />
+            </div>
+        </header>
+    );
 }

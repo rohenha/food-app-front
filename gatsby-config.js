@@ -8,7 +8,7 @@ module.exports = {
         {
             resolve: `gatsby-plugin-env-variables`,
             options: {
-                allowList: [],
+                allowList: ["BACKEND_URL"],
             },
         },
         {
@@ -18,10 +18,10 @@ module.exports = {
             },
         },
         // {
-        //   resolve: `gatsby-source-datocms`,
-        //   options: {
-        //     apiToken: process.env.DATO_API_TOKEN,
-        //   }
+        //     resolve: `gatsby-plugin-layout`,
+        //     options: {
+        //         component: require.resolve(`./src/components/layout/layout.component.tsx`),
+        //     },
         // },
         {
             resolve: `gatsby-plugin-postcss`,

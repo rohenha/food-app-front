@@ -1,27 +1,13 @@
-import React from "react"
-// import { graphql } from "gatsby";
-import { LayoutComponent } from "Components"
+import React from "react";
+import { Link } from "gatsby";
 
 interface IHomePageProps {}
 
-// export const query = graphql`
-//     query HomePage {
-//         teams: allDatoCmsTeam {
-//             nodes {
-//                 ...teamFragment
-//             }
-//         }
-//     }
-// `;
-
 export default function Home({}: IHomePageProps) {
     return (
-        <LayoutComponent name="home">
-            <React.Fragment>
-                <div className="container">
-                    <h1>Index</h1>
-                </div>
-            </React.Fragment>
-        </LayoutComponent>
+        <div className="container">
+            <h1>Health food</h1>
+            <Link to="/login">Login</Link>
+        </div>
     )
 }

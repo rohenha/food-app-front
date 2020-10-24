@@ -14,38 +14,13 @@ exports.onCreateWebpackConfig = ({ stage, actions, plugins, loaders }) => {
 // Function to create pages from Data //
 ////////////////////////////////////////
 
-// exports.createPages = ({ graphql, actions }) => {
-//     const { createPage } = actions;
-
-//     return new Promise((resolve, reject) => {
-//         graphql(`
-//             {
-//                 teams: allDatoCmsTeam {
-//                     edges {
-//                         node {
-//                             slug
-//                         }
-//                     }
-//                 }
-//                 products: allDatoCmsProduct {
-//                     edges {
-//                         node {
-//                             slug
-//                         }
-//                     }
-//                 }
-//             }
-//         `).then(result => {
-//             result.data.teams.edges.map(({ node: team }) => {
-//                 createPage({
-//                     path: `equipes/${team.slug}`,
-//                     component: path.resolve("./src/templates/team.tsx"),
-//                     context: {
-//                     slug: team.slug
-//                     }
-//                 });
-//             });
-//             resolve();
-//         });
-//     });
-// };
+exports.onCreatePage = async ({ page, actions }) => {
+    const { createPage } = actions
+    // page.matchPath is a special key that's used for matching pages
+    // only on the client.
+    if (page.path.match(/^\/app/)) {
+      page.matchPath = "/app/*"
+      // Update the page.
+      createPage(page)
+    }
+  }
