@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { LayoutComponent } from "Components";
+import { AppHeaderComponent } from "Components";
 import { navigate } from "gatsby";
 import { useAuth } from "Hooks";
 
@@ -20,13 +20,13 @@ export function AppLayout({ children }: IAppPageProps) {
     }
 
     return (
-        <LayoutComponent>
-            <div className="container">
-                <pre>
-                    { JSON.stringify(state, null, 2) }
-                </pre>
-                {children}
-            </div>
-        </LayoutComponent>
+        <React.Fragment>
+            <AppHeaderComponent />
+            <main className={`page`}>
+                <div className="container">
+                    {children}
+                </div>
+            </main>
+        </React.Fragment>
     );
 }

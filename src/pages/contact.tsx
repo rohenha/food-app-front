@@ -5,7 +5,7 @@ export default () => {
     return (
         <LandingLayoutComponent>
             <div className="container">
-                <h1>Health food</h1>
+                <h1>Contact</h1>
             </div>
         </LandingLayoutComponent>
     )

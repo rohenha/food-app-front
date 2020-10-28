@@ -12,22 +12,23 @@ module.exports = {
             },
         },
         {
-            resolve: "gatsby-plugin-sass",
-            options: {
-                data: `@import "${__dirname}/src/styles/site";`,
-            },
-        },
-        // {
-        //     resolve: `gatsby-plugin-layout`,
-        //     options: {
-        //         component: require.resolve(`./src/components/layout/layout.component.tsx`),
-        //     },
-        // },
-        {
             resolve: `gatsby-plugin-postcss`,
             options: {
                 postCssPlugins: [autoprefixer()],
             },
         },
+        {
+            resolve: "gatsby-plugin-sass",
+            options: {
+                data: `@import "${__dirname}/src/styles/site";`,
+            },
+        },
+        {
+            resolve: `gatsby-plugin-mini-css-class-name`,
+            options: {
+              prefix: `x-`,
+              suffix: `x-`,
+            },
+        }
     ],
 }

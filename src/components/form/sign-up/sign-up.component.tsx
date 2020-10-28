@@ -1,17 +1,19 @@
 import React, { useCallback, useState } from "react";
-import { ButtonComponent, EmailComponent, FieldComponent, PasswordComponent } from "Components";
-import { useAuth } from "Hooks";
+import { ButtonComponent, EmailComponent, FieldComponent, MessageComponent, PasswordComponent } from "Components";
+import { useAuth, useError } from "Hooks";
+
+import SignUpStyle from "./sign-up.component.module.sass";
 
 interface ISignUpComponentProps {}
 
 export function SignUpComponent ({}: ISignUpComponentProps) {
-    const { state, register } = useAuth();
+    const { register } = useAuth();
     const [form, setForm] = useState({
         email: "",
         password: "",
         error: false
     });
-    const [error, setError] = useState('');
+    const [error, setError] = useError();
 
     const handleChangeValue = useCallback((value: string | boolean, attribute: string) => {
         setForm(f => ({ ...f, [attribute]: value }) );
@@ -29,9 +31,7 @@ export function SignUpComponent ({}: ISignUpComponentProps) {
         const data = new FormData(e.target);
         register(data)
             .catch((e: any) => {
-                const { response: { data: { message: [{ messages: [error]}] } } } = e;
-                const { message: msg } = error;
-                setError(msg);
+                setError(e);
             });
     };
 
@@ -41,14 +41,20 @@ export function SignUpComponent ({}: ISignUpComponentProps) {
 
     return (
         <form onSubmit={handleSubmit}>
-            <pre>
-                { JSON.stringify({ form }, null, 2)}
-            </pre>
-            {error && <p>{error}</p>}
-            <FieldComponent name="username" error="" className="">Username</FieldComponent>
-            <EmailComponent error={form.error} verification callback={handleChangeValue} />
-            <PasswordComponent error={form.error} verification callback={handleChangeValue} />
-            <ButtonComponent>S'inscrire</ButtonComponent>
+            {error && <MessageComponent type="error">{JSON.stringify(error)}</MessageComponent>}
+            <div className="row mb-4">
+                <div className="col-md-6 mb-4 mb-md-0">
+                    <FieldComponent name="username" error="" className="">Username</FieldComponent>
+                    <EmailComponent error={form.error} verification callback={handleChangeValue} />
+                </div>
+                <div className="col-md-6">
+                    <PasswordComponent error={form.error} verification callback={handleChangeValue} />
+                </div>
+            </div>
+            <div className={SignUpStyle.nav}>
+                <ButtonComponent>S'inscrire</ButtonComponent>
+                <ButtonComponent type={5} link="/login">Se connecter</ButtonComponent>
+            </div>
         </form>
     );
 }

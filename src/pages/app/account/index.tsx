@@ -3,9 +3,7 @@ import { AppLayout } from "Components";
 import { useAuth } from "Hooks";
 import { Link } from "gatsby";
 
-interface IAppPageProps {}
-
-export default ({}: IAppPageProps) => {
+export default () => {
     const { state, getAccount } = useAuth();
 
     useEffect(() => {

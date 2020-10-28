@@ -1,11 +1,9 @@
 import React, { useEffect } from "react";
-import { SignInComponent } from "Components";
+import { LandingLayoutComponent, SignInComponent } from "Components";
 import { useAuth } from "Hooks";
-import { navigate, Link } from "gatsby";
+import { navigate } from "gatsby";
 
-interface ILoginPageProps {}
-
-export default ({}: ILoginPageProps) => {
+export default () => {
     const { state } = useAuth();
 
     useEffect(() => {
@@ -19,10 +17,15 @@ export default ({}: ILoginPageProps) => {
     }
 
     return (
-        <div className="container">
-            <SignInComponent />
-            <Link to="/">Accueil</Link>
-            <Link to="/sign-up">Sign-up</Link>
-        </div>
+        <LandingLayoutComponent>
+            <div className="container">
+                <div className="row">
+                    <div className="col-sm-8 offset-sm-2 col-md-6 offset-md-3">
+                        <h1>Connexion</h1>
+                        <SignInComponent />
+                    </div>
+                </div>
+            </div>
+        </LandingLayoutComponent>
     )
 }

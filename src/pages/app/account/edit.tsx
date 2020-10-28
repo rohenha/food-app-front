@@ -2,10 +2,7 @@ import React, { useCallback, useEffect, useState } from "react";
 import { AppLayout, ButtonComponent, EmailComponent, FieldComponent } from "Components";
 import { useAuth } from "Hooks";
 
-
-interface IAppPageProps {}
-
-export default ({}: IAppPageProps) => {
+export default () => {
     const { state, getAccount, update } = useAuth();
     const [form, setForm] = useState({
         email: state.user.email,

@@ -12,6 +12,6 @@ export function SignOutComponent ({}: IFieldComponentProps) {
     };
 
     return (
-        <ButtonComponent onClick={handleSignOut}>Se déconnecter</ButtonComponent>
+        <ButtonComponent type={4} onClick={handleSignOut}>Se déconnecter</ButtonComponent>
     );
 }

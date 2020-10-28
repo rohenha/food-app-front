@@ -1,0 +1,23 @@
+.field
+    &-group
+        &:not(:last-child)
+            margin-bottom: 20px
+
+    &-label
+        color: darken($color-white, $color-dark)
+        display: block
+        margin-bottom: 8px
+
+    &-input
+        &:not([type="checkbox"])
+            border: 1px solid darken($color-white, $color-dark)
+            border-radius: 3px
+            display: block
+            padding: 8px 15px
+            width: 100%
+
+    &-invalid
+        background-color: $color-7
+        border: 1px solid darken($color-7, $color-dark)
+        color: $color-white
+        padding: 10px 20px

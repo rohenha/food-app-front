@@ -1,13 +1,13 @@
 import * as React from "react"
 
-import "./footer.component.sass"
+import footerStyle from "./footer.component.module.sass";
 
 interface IFooterComponentProps {}
 
-export function FooterComponent({}: IFooterComponentProps) {
+export function LandingFooterComponent({}: IFooterComponentProps) {
     return (
         <React.Fragment>
-            <footer>
+            <footer className={footerStyle.footer}>
                 <div className="container">
                     <p>footer</p>
                 </div>
